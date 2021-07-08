@@ -1,0 +1,38 @@
+<p>home works!</p>
+<div *ngIf="messages.length > 0; else noMessages ">
+    <!-- {{messages}} -->
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let m of messages">
+                <td>#</td>
+                <td>{{m | lowercase}}</td>
+                <td>{{ 1000 | currency : "GBP" }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h3>
+    {{customObj | json }}
+</h3>
+
+<h4>
+   Power By 3:  {{ numPower | power }}
+</h4>
+<!-- Else block in case of no messages found -->
+<ng-template #noMessages>
+    <h3> NO Messages Found </h3>
+</ng-template>
+
+<!-- property binding -->
+<input type="text" [value]="uName" (input)="getName($event)" />
+<h2>I was clicked : {{counter}}</h2>
+
+<!-- Event Binding -->
+<button (click)="clickMe()">Click Me!</button>
