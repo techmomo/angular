@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { PowerPipe } from './components/home/pipes/power.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { PowerPipe } from './components/home/pipes/power.pipe';
     PowerPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule, 
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

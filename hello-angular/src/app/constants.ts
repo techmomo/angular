@@ -1,0 +1,1 @@
+export const reqBaseUrl:string = 'https://reqres.in/api/users?page=2';

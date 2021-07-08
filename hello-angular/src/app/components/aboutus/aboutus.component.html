@@ -1,1 +1,34 @@
 <p>aboutus works!</p>
+
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th colspan="2">
+
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let u of users">
+            <td>
+                <div>
+                    {{u.id}} #</div>
+            </td>
+            <td><img src={{u.avatarUrl}} /></td>
+           
+            <td colspan="2">
+                <div>
+                    <label> 
+                        <b>NAME:</b></label>
+                        {{u.name}}</div>
+                <div>
+                    <label> 
+                        <b>EMAIL:</b></label>
+                        {{u.email}}</div>
+            </td>
+        </tr>
+    </tbody>
+</table>

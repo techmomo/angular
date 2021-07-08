@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { HelloService } from 'src/app/services/hello.service';
 import { MPower } from '../MPower';
 
 @Component({
@@ -19,31 +20,14 @@ export class HomeComponent implements OnInit,OnDestroy {
   // send data to parent from child
   @Output() msgInfo:EventEmitter<string> = new EventEmitter();
 
-  constructor() { }
+  constructor(private service:HelloService) { }
 
   ngOnInit(): void {
 
-    console.log('App Component has send some info '+this.data);
-
-    this.customObj = {
-      id: 1,
-      name: 'Custom User'
-    };
-
-    // create power object
-
-    let mPow:MPower ={
-      val: 10,
-      pow: 3
-    }
-    this.numPower= mPow;
-
-    this.messages =[
-      'Hello',
-      'How',
-      'Welcome',
-      'Hola'
-    ];
+    this.service.startUp(this.data);
+    this.customObj = this.service.getCustomObj();
+    this.messages = this.service.getMessages();
+    this.numPower= this.service.getMPower();
   }
 
   clickMe(){
@@ -51,7 +35,6 @@ export class HomeComponent implements OnInit,OnDestroy {
     this.counter = this.counter + 1;
     console.log('I was clicked '+this.uName);
   }
-
   // get value from input type via OnInput Method
   getName(uu:Event){
     console.log((<HTMLInputElement>uu.target).value);
@@ -60,3 +43,16 @@ export class HomeComponent implements OnInit,OnDestroy {
 
   }
 }
+
+
+/***
+ * Depedency Injection
+ * 
+ * 1. Constructor Injection
+ * 2. Variable Injection
+ * 3. Interface Injection
+ * 4. Setter Injection
+ * 
+ * Angular supports only constructor injection
+ * 
+ */
