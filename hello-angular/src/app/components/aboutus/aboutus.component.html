@@ -13,8 +13,18 @@
     </thead>
     <tbody>
         <tr *ngFor="let u of users">
-            <td>
-                <div>
+            <td colspan="4">
+                <div class="card">
+                    <img src={{u.avatarUrl}} class="card-img-top" />
+                    <div class="card-body">
+                        <h5 class="card-title"> {{u.name}}</h5>
+                        <p class="card-text">
+                            {{u.email}}
+                        </p>
+                    </div>
+
+                </div>
+                <!-- <div>
                     {{u.id}} #</div>
             </td>
             <td><img src={{u.avatarUrl}} /></td>
@@ -27,7 +37,7 @@
                 <div>
                     <label> 
                         <b>EMAIL:</b></label>
-                        {{u.email}}</div>
+                        {{u.email}}</div> -->
             </td>
         </tr>
     </tbody>

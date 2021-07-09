@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { EmployeevalidatorService } from 'src/app/services/validators/employeevalidator.service';
 
 @Component({
   selector: 'app-employee',
@@ -12,13 +13,18 @@ export class EmployeeComponent implements OnInit {
   submitted:boolean=false;
   eRegisterForm:FormGroup=new FormGroup({});
 
-  constructor(private builder:FormBuilder, private router:Router) { }
+  constructor(private builder:FormBuilder, private router:Router, private validator:EmployeevalidatorService) { }
 
   ngOnInit(): void {
     this.eRegisterForm = this.builder.group({
       name: ['',Validators.required],
       email: ['',Validators.email],
-      password: ['',[Validators.required,Validators.minLength(4),Validators.maxLength(10)]]
+      password: ['',Validators.compose([
+        Validators.required ,
+        Validators.minLength(4), 
+        Validators.maxLength(10),
+        this.validator.validatePassword()
+      ])]
     });
   }
 

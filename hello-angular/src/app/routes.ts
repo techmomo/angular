@@ -23,11 +23,6 @@ export const routes:Routes=[
         component: EmployeeinfoComponent
     },
     {
-        path: 'em',
-        redirectTo: '/employees',
-        pathMatch: 'prefix'
-    },
-    {
         path: '',
         redirectTo: '/home',
         pathMatch: 'full'
