@@ -14,15 +14,6 @@ export class AboutusComponent implements OnInit {
   users:UserDto[]=[];
   ngOnInit(): void {
     // id , email , first_name , last_name 
-    this.uService.getUsers().subscribe(resp=>{
-      for (const u of resp.data) {
-          this.users.push({
-            id: u.id,
-            name: u.first_name +' '+u.last_name,
-            email: u.email,
-            avatarUrl: u.avatar
-          });
-        }
-    });
+    this.uService.getUsers().subscribe(results=> this.users = this.uService.getUsersFromObservable(results));
   }
 }

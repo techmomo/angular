@@ -1,0 +1,32 @@
+<fieldset>
+    <legend>Employee </legend>
+    <form [formGroup]="eRegisterForm" (submit)="registerEmployee()">
+        <div>
+            <label>Name:</label>
+            <input type="text" formControlName="name" />
+            <span *ngIf="(eRegisterFormControl.name.touched || submitted) && eRegisterFormControl.name.errors?.required">
+                Name is required
+            </span>
+        </div>
+        <div>
+            <label>Email:</label>
+            <input type="text" formControlName="email" />
+            <span *ngIf="(eRegisterFormControl.email.touched || submitted) && eRegisterFormControl.email.errors?.email">
+                Please specify a valid email address
+            </span>
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password" formControlName="password" />
+            <span *ngIf="(eRegisterFormControl.password.touched || submitted) && eRegisterFormControl.password.errors?.required">
+                Password is required
+            </span>
+            <span *ngIf="(eRegisterFormControl.password.touched || submitted) && eRegisterFormControl.password.errors?.minlength">
+                Password is should be sized between 4 to 10
+            </span>
+        </div>
+        <div>
+            <button type="submit">Register</button>
+        </div>
+    </form>
+</fieldset>
