@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee',
@@ -11,7 +12,7 @@ export class EmployeeComponent implements OnInit {
   submitted:boolean=false;
   eRegisterForm:FormGroup=new FormGroup({});
 
-  constructor(private builder:FormBuilder) { }
+  constructor(private builder:FormBuilder, private router:Router) { }
 
   ngOnInit(): void {
     this.eRegisterForm = this.builder.group({
@@ -30,6 +31,8 @@ export class EmployeeComponent implements OnInit {
     console.log(this.eRegisterForm);
     if(this.eRegisterForm.valid){
       console.log('Form Submitted without errors...');
+      // navigate to employee info in case of no errors
+      this.router.navigate(['/employees/info',this.eRegisterForm.value.name]);
     }
   }
 }
