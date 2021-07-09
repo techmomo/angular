@@ -33,6 +33,7 @@ export class EmployeeComponent implements OnInit {
       console.log('Form Submitted without errors...');
       // navigate to employee info in case of no errors
       this.router.navigate(['/employees/info',this.eRegisterForm.value.name]);
+      //his.router.navigate(['/employees/info']);
     }
   }
 }
